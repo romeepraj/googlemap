@@ -1,5 +1,8 @@
 var MapModule = (function(){
+  //Marker normal and hover images
   var markerImage = {marker :'images/pin.png', markerhover:'images/pin-hover.png'};
+
+  /** @constructor */
   function CreateMap(data)
   {
       this.newMap = new google.maps.Map(document.getElementById('map'),
@@ -18,6 +21,8 @@ var MapModule = (function(){
          dblclick:false,
          clickableIcons: false
       });
+
+      //Map feature styles to show only specific locations & road
       this.mapStyle = [ 
           {
             featureType: "all",
@@ -44,37 +49,48 @@ var MapModule = (function(){
               stylers: [{ visibility: "on" }]
             }
         ];
+
+        //Set style to the map
         this.newMap.set('styles', this.mapStyle);
 
-
+      //Close blades, when clicked on anywhere on the map
       this.newMap.addListener('click', function(e) {
          $(".itemcontent").stop().animate({left:'-' + $(".itemcontent").width()},1000);
       });
   }
+
+  //Add CreateMarker method, which will add marker to the map given the input json data
   CreateMap.prototype.CreateMarker = function(data)
   {
+      //create variable with the marker Image and the markersize
       var markerI = {
             url: markerImage.marker, 
             scaledSize : new google.maps.Size(48, 48)
       };
+
+      //create marker
       var newMarker = new google.maps.Marker({
          position: data,
          title: data.title,
          icon:markerI
       });
+
+      //When marker is clicked, blade element will be populated and slide in from left
       newMarker.addListener('click', function() {
 
         $(".itemcontent").css("left",'-' + $(".itemcontent").width() + "px");
-          // $(".blades").append("<div class='close'>X</div><div class='inner'><div class='blade-img'><img src='"+ data.image + "'></div><div class='blades-content'><h1>" + data.title + "</h1><div class='blades-desc'>"+ data.description +"</div></div></div>");
           $("#item_img").attr("src",data.image);
           $(".blades-content h1").text(data.title);
           $(".blades-desc").html(data.description);
           $(".itemcontent").stop().animate({left:0},1000);
 
+          //Slide out blade when close button is clicked
           $('.close').click(function(){
                    $(".itemcontent").stop().animate({left:'-' + $(".itemcontent").width()},1000);
           });
       });
+
+      //Change marker image on mouseover and mouseout of the marker
       with ({ markerImageData: markerImage, markerImg:markerI }) {
          newMarker.addListener('mouseover', function() {
             markerImg.url = markerImageData.markerhover;
@@ -85,13 +101,18 @@ var MapModule = (function(){
             this.setIcon(markerImg);
          });
       }
+
+      //Add marker to the map
       newMarker.setMap(this.newMap);
   }
 
-   CreateMap.prototype.OuterLay = function(){
-      var bounds = new google.maps.LatLngBounds();
-      var srcImage = '../images/map-overlay.png';
-      overlay = new USGSOverlay(bounds, srcImage, this.newMap);
+  //Method to add given overlay image to the map
+   CreateMap.prototype.addOverlayImage = function(image){
+      if(image.length > 0){
+        var bounds = new google.maps.LatLngBounds();
+        var srcImage = image;
+        overlay = new USGSOverlay(bounds, srcImage, this.newMap);
+      }
    }
 
 
@@ -111,7 +132,7 @@ var MapModule = (function(){
     // Explicitly call setMap on this overlay.
     this.setMap(map);
   }
-    USGSOverlay.prototype = new google.maps.OverlayView();
+  USGSOverlay.prototype = new google.maps.OverlayView();
 
   /**
    * onAdd is called when the map's panes are ready and the overlay has been
