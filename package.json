@@ -1,0 +1,25 @@
+{
+  "name": "googlemap",
+  "version": "1.0.0",
+  "description": "SPA Googlemap for paris",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "browser-sync": "^2.18.5",
+    "gulp": "^3.9.1",
+    "gulp-uglify": "^2.0.0",
+    "gulp-watch": "^4.3.11",
+    "gulp-sass": "^3.0.0",
+    "gulp-sourcemaps": "^2.2.1",
+    "gulp-plumber":"*",
+    "pump":"*",
+    "gulp-rename":"*"
+  },
+  "keywords": [
+    "googlemap"
+  ],
+  "author": "romee prajapati",
+  "license": "ISC"
+}

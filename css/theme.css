@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css?family=Hind+Vadodara:400,600|Open+Sans+Condensed:300,700|Prompt|Tenali+Ramakrishna');
+body{
+  margin:0;
+  padding:0;
+  font-family: 'Tenali Ramakrishna', sans-serif;
+  font-size:31px;
+  line-height: 35px;
+}
+#map {
+  height: 100vh;
+  width: 100%;
+}
+.logo{
+  position:absolute;
+  top:0;
+  background:url('../images/logo-the-stay.png') no-repeat;
+  background-size:100%;
+  width:100%;
+  height:130px;
+}
+.blades
+{
+  float:left;
+  background:url('../images/water-mark-for-blade.png') no-repeat;
+  background-position:right bottom;
+  overflow:scroll;
+  height: 91%;
+}
+
+.itemcontent{
+    position: absolute;
+    top: 150px;
+    left:-100%;
+    height:auto;
+    bottom:0px;
+    width:100%;
+    background-color:rgba(255,255,255,0.8);
+   
+ }
+.itemcontent .closediv{
+    width: 100%;
+    height: 70px;
+}
+.blades .inner{
+  padding:0px 40px 5px 40px;
+
+}
+
+.blades > .inner h1{
+  text-transform:uppercase;
+  letter-spacing:13px;
+  font-weight:400;
+  font-family: 'Hind Vadodara', sans-serif;
+  line-height:40px;
+  font-size:45px;
+}
+.blades img
+{
+    width:100%;
+
+}
+.close
+{
+  cursor:pointer;
+  float:right;
+  font-weight:bold;
+  font-size:55px;
+  font-family: 'Prompt', sans-serif;
+  padding:20px 10px 20px 10px;
+  padding-bottom:0px;
+}
+
+@media only screen and (min-width: 768px) {
+  .logo{
+    width:700px;
+    height:92px;
+  }
+  .itemcontent{
+    top:100px;
+  }
+}
+@media only screen and (min-width: 982px) {
+  body{
+    font-size:20px;
+    line-height: 20px;
+  }
+  .blade-img{
+  height: 308px;
+  display: block;
+  overflow: hidden;
+  }
+  .itemcontent
+  {
+    width:650px;
+  }
+  .close
+  {
+    font-size:25px;
+    padding:5px;
+  }
+   .itemcontent .closediv{
+    height: 70px;
+  }
+  .blades{
+    background-size:285px 285px;
+  }
+  .blades .inner{
+    padding:0px 25px 5px 25px;
+    
+  }
+  .blades > .inner h1{
+    font-size:30px;
+  }
+  .itemcontent .closediv {
+    height: 15px;
+  }
+
+}
