@@ -78,6 +78,10 @@ body{
   .itemcontent{
     top:100px;
   }
+  #map {
+    height: 100vh;
+  }
+
 }
 @media only screen and (min-width: 982px) {
   body{
