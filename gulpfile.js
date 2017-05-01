@@ -1,7 +1,7 @@
 
 var browserSyncWatchFiles = [
     '*.html',
-    './css/*.min.css',
+    './css/*.css',
     './js/*.js'
     
     
